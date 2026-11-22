@@ -1,0 +1,11 @@
+{
+  "name": "ot-masterprep",
+  "version": "1.0.0",
+  "description": "Operation Theatre Technology Study App",
+  "main": "index.html",
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  }
+}
