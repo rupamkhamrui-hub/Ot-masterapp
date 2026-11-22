@@ -1,313 +1,283 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OT MasterPrep - Operation Theatre Technology</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        teal: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            800: '#115e59',
-                            900: '#134e4a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Hide scrollbars for horizontal category pills while maintaining scrollability */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        /* Native app-like tap highlight removal */
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            background-color: #f1f5f9;
-        }
-        /* Smooth fade animation */
-        .fade-in {
-            animation: fadeIn 0.2s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OT MasterPrep - Operation Theatre Technology</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #f1f5f9; color: #0f172a; padding-bottom: 125px; }
+    
+    /* Header */
+    .header { background: linear-gradient(135deg, #0f766e, #115e59); color: #fff; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .logo { width: 38px; height: 38px; background: rgba(255,255,255,0.18); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .header h1 { font-size: 17px; font-weight: 700; }
+    .header p { font-size: 11px; color: #ccfbf1; }
+    .badge { background: rgba(0,0,0,0.25); padding: 4px 9px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.4px; }
+
+    /* Container & Cards */
+    .container { padding: 14px; max-width: 600px; margin: auto; }
+    .section-title { font-size: 15px; font-weight: 700; color: #0f766e; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+    .search-box { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; margin-bottom: 12px; font-size: 14px; background: #fff; }
+    
+    .card { background: #fff; border-radius: 12px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid #0d9488; }
+    .card-tag { display: inline-block; background: #ccfbf1; color: #0f766e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-bottom: 6px; }
+    .card h3 { font-size: 15px; margin-bottom: 8px; color: #1e293b; }
+    .card ul { padding-left: 18px; font-size: 13.5px; line-height: 1.55; color: #334155; }
+    .card li { margin-bottom: 5px; }
+
+    /* Video Card */
+    .video-box { width: 100%; aspect-ratio: 16/9; background: #0f172a; border-radius: 8px; overflow: hidden; margin-top: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 13px; }
+    .video-box iframe { width: 100%; height: 100%; border: none; }
+    .btn { background: #0f766e; color: #fff; border: none; padding: 8px 12px; border-radius: 8px; font-size: 12.5px; font-weight: 600; cursor: pointer; margin-top: 8px; display: inline-block; }
+    .btn-outline { background: #f0fdfa; color: #0f766e; border: 1px solid #0d9488; }
+
+    /* Quiz */
+    .option { display: block; width: 100%; text-align: left; padding: 10px 12px; margin: 6px 0; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; font-size: 13.5px; cursor: pointer; }
+    .option.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; font-weight: 600; }
+    .option.wrong { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
+    .exp { font-size: 12.5px; background: #f0fdfa; padding: 8px; border-radius: 6px; margin-top: 6px; color: #115e59; display: none; }
+
+    /* Forms */
+    input, textarea, select { width: 100%; padding: 10px; margin: 6px 0 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13.5px; }
+
+    /* AdMob Banner & Bottom Nav */
+    .ad-banner { position: fixed; bottom: 58px; left: 0; right: 0; height: 50px; background: #e2e8f0; border-top: 1px solid #cbd5e1; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font-size: 12px; color: #475569; z-index: 40; }
+    .ad-tag { background: #f59e0b; color: #fff; font-weight: 700; font-size: 10px; padding: 2px 5px; border-radius: 4px; margin-right: 6px; }
+    .nav { position: fixed; bottom: 0; left: 0; right: 0; height: 58px; background: #fff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; align-items: center; z-index: 50; }
+    .nav-item { flex: 1; text-align: center; font-size: 11px; color: #64748b; cursor: pointer; padding: 6px 0; font-weight: 600; }
+    .nav-item.active { color: #0f766e; }
+    .nav-icon { font-size: 18px; display: block; margin-bottom: 2px; }
+    .hidden { display: none; }
+  </style>
 </head>
-<body class="text-slate-800 antialiased select-none sm:select-auto">
+<body>
 
-    <!-- Mobile-First App Shell Container -->
-    <div class="max-w-md mx-auto min-h-screen bg-slate-50 shadow-xl relative flex flex-col pb-32 border-x border-slate-200">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo">🩺</div>
+      <div>
+        <h1>OT MasterPrep</h1>
+        <p>Operation Theatre Technology</p>
+      </div>
+    </div>
+    <div class="badge">AIIMS • ESIC • RRB</div>
+  </div>
 
-        <!-- Top Clinical Header -->
-        <header class="sticky top-0 z-30 bg-gradient-to-r from-teal-700 to-teal-800 text-white px-4 py-3.5 shadow-md">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20">
-                        <i class="fa-solid fa-heart-pulse text-teal-200 text-lg"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-bold text-base leading-tight tracking-tight">OT MasterPrep</h1>
-                        <p class="text-[11px] text-teal-100 font-medium">Operation Theatre Technology</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <span class="text-[10px] font-semibold bg-teal-900/60 border border-teal-500/30 px-2.5 py-1 rounded-full text-teal-100">
-                        AIIMS • ESIC • RRB
-                    </span>
-                </div>
-            </div>
-        </header>
+  <!-- TAB 1: NOTES -->
+  <div id="tab-notes" class="container">
+    <div class="section-title"><span>📚 Quick Revision Notes</span><span id="note-count" style="font-size:12px;color:#64748b;"></span></div>
+    <input type="text" class="search-box" id="searchInput" placeholder="Search topic (e.g. Autoclave, Pin Index, Drugs)..." onkeyup="renderNotes()" />
+    <div id="notes-list"></div>
+  </div>
 
-        <!-- Main Content Area -->
-        <main id="app-content" class="flex-1 p-4 space-y-4">
-            <!-- Dynamic Content Injected by JavaScript -->
-        </main>
+  <!-- TAB 2: VIDEO CLASSES -->
+  <div id="tab-videos" class="container hidden">
+    <div class="section-title"><span>🎥 5-Min Topic Video Classes</span></div>
+    <div id="videos-list"></div>
+  </div>
 
-        <!-- Subtle AdMob Banner Space Preview (Fixed right above Bottom Nav) -->
-        <div class="fixed bottom-16 left-0 right-0 z-20 max-w-md mx-auto px-2">
-            <div class="bg-slate-200/95 backdrop-blur-sm border border-slate-300 rounded-lg h-[50px] flex items-center justify-between px-3 shadow-sm">
-                <div class="flex items-center space-x-2">
-                    <span class="bg-amber-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">Ad</span>
-                    <span class="text-xs font-medium text-slate-600">AdMob Banner Space (320x50)</span>
-                </div>
-                <span class="text-[10px] text-slate-400 font-mono">ca-app-pub-xxxx</span>
-            </div>
-        </div>
+  <!-- TAB 3: MOCK TEST -->
+  <div id="tab-quiz" class="container hidden">
+    <div class="section-title"><span>📝 OT Exam Practice MCQ</span><span id="score-box" style="font-size:12px;">Score: 0</span></div>
+    <div id="quiz-list"></div>
+  </div>
 
-        <!-- Bottom Navigation Bar -->
-        <nav class="fixed bottom-0 left-0 right-0 z-30 max-w-md mx-auto bg-white border-t border-slate-200 h-16 px-2 flex items-center justify-around shadow-[0_-4px_12px_rgba(0,0,0,0.04)]">
-            <button onclick="switchTab('notes')" id="nav-notes" class="nav-btn flex flex-col items-center justify-center w-full h-full text-teal-600 transition-colors">
-                <i class="fa-solid fa-book-medical text-lg mb-1"></i>
-                <span class="text-[11px] font-semibold">Notes</span>
-            </button>
-            <button onclick="switchTab('videos')" id="nav-videos" class="nav-btn flex flex-col items-center justify-center w-full h-full text-slate-400 hover:text-slate-600 transition-colors">
-                <i class="fa-solid fa-circle-play text-lg mb-1"></i>
-                <span class="text-[11px] font-medium">Video Classes</span>
-            </button>
-            <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn flex flex-col items-center justify-center w-full h-full text-slate-400 hover:text-slate-600 transition-colors">
-                <i class="fa-solid fa-clipboard-check text-lg mb-1"></i>
-                <span class="text-[11px] font-medium">Mock Test</span>
-            </button>
-            <button onclick="switchTab('manage')" id="nav-manage" class="nav-btn flex flex-col items-center justify-center w-full h-full text-slate-400 hover:text-slate-600 transition-colors">
-                <i class="fa-solid fa-sliders text-lg mb-1"></i>
-                <span class="text-[11px] font-medium">Manage / Add</span>
-            </button>
-        </nav>
-
-        <!-- Note Detail Reader Modal -->
-        <div id="note-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex-col justify-end sm:justify-center max-w-md mx-auto">
-            <div class="bg-white w-full max-h-[88vh] rounded-t-3xl sm:rounded-2xl flex flex-col overflow-hidden shadow-2xl fade-in">
-                <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-teal-50/60">
-                    <div>
-                        <span id="modal-note-category" class="text-[10px] font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-2.5 py-0.5 rounded-full">Category</span>
-                        <h2 id="modal-note-title" class="text-base font-bold text-slate-900 mt-1">Topic Title</h2>
-                    </div>
-                    <button onclick="closeNoteModal()" class="w-9 h-9 rounded-full bg-slate-200/70 text-slate-600 flex items-center justify-center hover:bg-slate-300">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <div id="modal-note-body" class="p-5 overflow-y-auto space-y-4 text-sm text-slate-700 leading-relaxed">
-                    <!-- Note rich content -->
-                </div>
-                <div class="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between gap-3">
-                    <button id="modal-note-complete-btn" class="flex-1 py-2.5 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition">
-                        <!-- Toggled dynamically -->
-                    </button>
-                    <button onclick="closeNoteModal()" class="py-2.5 px-5 rounded-xl bg-slate-200 text-slate-700 font-semibold text-sm">
-                        Close
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Video Player Modal -->
-        <div id="video-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-xs hidden flex-col justify-center p-3 max-w-md mx-auto">
-            <div class="bg-white w-full rounded-2xl overflow-hidden shadow-2xl fade-in">
-                <div class="px-4 py-3 bg-slate-900 text-white flex items-center justify-between">
-                    <div class="flex items-center space-x-2 truncate pr-2">
-                        <span class="bg-teal-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">5:00 MIN</span>
-                        <h3 id="video-modal-title" class="text-sm font-semibold truncate">Class Title</h3>
-                    </div>
-                    <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 shrink-0">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                
-                <!-- Responsive 16:9 Video Container -->
-                <div id="video-player-container" class="relative w-full pt-[56.25%] bg-slate-950">
-                    <!-- Iframe or Placeholder injected here -->
-                </div>
-
-                <!-- Key Takeaways & Actions -->
-                <div class="p-4 space-y-3 max-h-[45vh] overflow-y-auto">
-                    <div class="flex items-center justify-between">
-                        <span id="video-modal-subject" class="text-xs font-semibold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-lg border border-teal-100">Subject</span>
-                        <button onclick="openEditVideoFromPlayer()" class="text-xs font-semibold text-slate-600 hover:text-teal-700 flex items-center gap-1">
-                            <i class="fa-solid fa-pen-to-square"></i> Edit YouTube Link
-                        </button>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Key Exam Takeaways</h4>
-                        <ul id="video-modal-takeaways" class="space-y-1.5 text-xs text-slate-700 list-disc pl-4">
-                            <!-- Bullet points -->
-                        </ul>
-                    </div>
-                    <div class="pt-2 flex gap-2">
-                        <button id="video-watched-btn" class="flex-1 py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-2 transition">
-                            <!-- Watched state -->
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Add / Edit Video Link Modal -->
-        <div id="edit-video-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex-col justify-center p-4 max-w-md mx-auto">
-            <div class="bg-white w-full rounded-2xl overflow-hidden shadow-2xl p-5 space-y-4 fade-in">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <h3 id="edit-modal-heading" class="font-bold text-base text-slate-900">Add / Update 5-Min Video</h3>
-                    <button onclick="closeEditVideoModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <form id="video-form" onsubmit="saveVideoForm(event)" class="space-y-3 text-sm">
-                    <input type="hidden" id="form-video-id">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Topic Title *</label>
-                        <input type="text" id="form-video-title" required placeholder="e.g., Boyle's Apparatus & Pin Index" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Subject Category *</label>
-                        <select id="form-video-subject" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600 bg-white">
-                            <option value="Anesthesia">Anesthesia</option>
-                            <option value="Surgical Instruments">Surgical Instruments</option>
-                            <option value="Sterilization & CSSD">Sterilization & CSSD</option>
-                            <option value="OT Management & Positions">OT Management & Positions</option>
-                            <option value="Anatomy & Pharmacology">Anatomy & Pharmacology</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">YouTube Link (Unlisted/Public) or Video ID</label>
-                        <input type="text" id="form-video-url" placeholder="https://youtu.be/xxxx or 11-char ID" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600">
-                        <p class="text-[11px] text-slate-400 mt-1">Supports standard, mobile, shorts, or unlisted YouTube URLs.</p>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Syllabus Tag / Short Note</label>
-                        <input type="text" id="form-video-tag" placeholder="e.g., High-Yield AIIMS CRE Topic" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Key Bullet Points (One per line)</label>
-                        <textarea id="form-video-bullets" rows="3" placeholder="Point 1&#10;Point 2&#10;Point 3" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600"></textarea>
-                    </div>
-                    <div class="pt-2 flex gap-2">
-                        <button type="submit" class="flex-1 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 rounded-xl shadow-sm transition">
-                            Save Class
-                        </button>
-                        <button type="button" onclick="closeEditVideoModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-semibold">
-                            Cancel
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Toast Notification Box (Replaces alert()) -->
-        <div id="toast-box" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-200 flex items-center gap-2">
-            <i class="fa-solid fa-circle-check text-teal-400"></i>
-            <span id="toast-msg">Saved successfully</span>
-        </div>
-
+  <!-- TAB 4: MANAGE / ADD -->
+  <div id="tab-manage" class="container hidden">
+    <div class="section-title"><span>➕ Add New Note or Video Class</span></div>
+    <div class="card">
+      <h3>Add Topic Note</h3>
+      <input type="text" id="newNoteCat" placeholder="Subject (e.g. Anesthesia, CSSD, Surgery)" />
+      <input type="text" id="newNoteTitle" placeholder="Topic Title" />
+      <textarea id="newNotePoints" rows="3" placeholder="Write key points (separate lines for bullets)"></textarea>
+      <button class="btn" onclick="addNote()">Save Note</button>
     </div>
 
-    <!-- JavaScript Application Logic -->
-    <script>
-        // ==========================================
-        // 1. AUTHENTIC OT TECHNOLOGIST STUDY DATA
-        // ==========================================
-        const initialNotes = [
-            {
-                id: 'note-1',
-                category: 'Anesthesia',
-                title: "Anesthesia Machine & Boyle's Apparatus",
-                readTime: '4 min read',
-                highYield: true,
-                summary: 'Pin Index Safety System (PISS), cylinder color coding, pressure gauges, Bain circuit, Circle system & scavenging.',
-                sections: [
-                    {
-                        heading: '1. Pin Index Safety System (PISS)',
-                        points: [
-                            'Prevents wrong gas cylinder attachment to the yoke assembly of the anesthesia machine.',
-                            '<b>Oxygen (O₂):</b> Pins <b>2 & 5</b> | Body: Black, Shoulder: White | Service Pressure: ~1900–2000 psi (137 bar).',
-                            '<b>Nitrous Oxide (N₂O):</b> Pins <b>3 & 5</b> | Color: French Blue | Service Pressure: ~745 psi (liquefied gas).',
-                            '<b>Medical Air:</b> Pins <b>1 & 5</b> | Body: Black/Grey, Shoulder: White & Black quarters.',
-                            '<b>Carbon Dioxide (CO₂):</b> Pins <b>1 & 6</b> (≤7.5%) or <b>2 & 6</b> (>7.5%) | Color: Grey.',
-                            '<b>Entonox (50% O₂ + 50% N₂O):</b> Pin <b>7</b> | Body: Blue, Shoulder: White & Blue.'
-                        ]
-                    },
-                    {
-                        heading: '2. Pressure Regulators & Flowmeters',
-                        points: [
-                            '<b>Primary Pressure Regulator:</b> Reduces high cylinder pressure (~2000 psi) down to a constant safe working pressure of <b>45–60 psi</b> (approx. 4 bar).',
-                            '<b>Rotameters (Flowmeters):</b> Variable orifice, constant pressure tubes made of tapered glass. Read from the <b>top of the bobbin</b> or <b>center of the ball</b>.',
-                            '<b>Sequence Rule:</b> Oxygen flowmeter is always placed <b>downstream (last)</b> nearest to the common gas outlet to prevent hypoxic mixture delivery if an upstream tube leaks.'
-                        ]
-                    },
-                    {
-                        heading: '3. Breathing Circuits & Vaporizers',
-                        points: [
-                            '<b>Mapleson D (Bain Circuit):</b> Coaxial modification of Mapleson D. Most efficient for controlled ventilation (FGF = 70–100 mL/kg/min).',
-                            '<b>Mapleson F (Jackson-Rees):</b> T-piece modification used predominantly in <b>pediatric anesthesia</b> (<20 kg) due to minimal dead space and low resistance.',
-                            '<b>Circle System:</b> Uses unidirectional inspiratory/expiratory valves and CO₂ absorber (<b>Soda Lime:</b> 80% Ca(OH)₂, 4% NaOH, 1% KOH, 15% H₂O; Indicator: Ethyl violet turns purple when exhausted).',
-                            '<b>Vaporizers:</b> Tec-5 / Tec-7 are variable bypass, temperature-compensated, out-of-circuit vaporizers. <b>Desflurane (Tec-6)</b> requires electrical heating (39°C) and pressurization (2 atm) due to its low boiling point (23.5°C).'
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 'note-2',
-                category: 'Anesthesia',
-                title: 'Airway Management & Intubation',
-                readTime: '5 min read',
-                highYield: true,
-                summary: 'ETT sizes, Macintosh vs Miller laryngoscope blades, Mallampati grades, LMA & Capnography (EtCO₂).',
-                sections: [
-                    {
-                        heading: '1. Endotracheal Tube (ETT) Sizing & Depth',
-                        points: [
-                            '<b>Adult Male:</b> 8.0 – 8.5 mm ID (Internal Diameter); fixed at <b>22–23 cm</b> at the incisor teeth.',
-                            '<b>Adult Female:</b> 7.0 – 7.5 mm ID; fixed at <b>20–21 cm</b> at the incisor teeth.',
-                            '<b>Pediatric Formula (>2 yrs):</b> Uncuffed ID = <code>(Age in years / 4) + 4</code>; Cuffed ID = <code>(Age / 4) + 3.5</code>.',
-                            '<b>Murphy Eye:</b> Lateral hole near the distal bevel providing an alternate ventilation pathway if the main lumen is occluded.'
-                        ]
-                    },
-                    {
-                        heading: '2. Laryngoscope Blades & Mallampati Score',
-                        points: [
-                            '<b>Macintosh Blade (Curved):</b> Tip is placed in the <b>vallecula</b> (anterior to epiglottis) to indirectly lift the epiglottis.',
-                            '<b>Miller Blade (Straight):</b>
+    <div class="card">
+      <h3>Add 5-Min YouTube Class</h3>
+      <input type="text" id="newVidCat" placeholder="Subject (e.g. Anesthesia)" />
+      <input type="text" id="newVidTitle" placeholder="Class Title (e.g. Boyle's Machine Check)" />
+      <input type="text" id="newVidUrl" placeholder="Paste YouTube Link (Unlisted or Public)" />
+      <button class="btn" onclick="addVideo()">Save Video Class</button>
+    </div>
+  </div>
+
+  <!-- AdMob Placeholder -->
+  <div class="ad-banner">
+    <div><span class="ad-tag">AD</span> <strong>AdMob Banner Space (320×50)</strong></div>
+    <span style="font-size:10px;color:#94a3b8;">ca-app-pub-xxxx</span>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="nav">
+    <div class="nav-item active" onclick="switchTab('notes', this)"><span class="nav-icon">📑</span>Notes</div>
+    <div class="nav-item" onclick="switchTab('videos', this)"><span class="nav-icon">▶️</span>Video Classes</div>
+    <div class="nav-item" onclick="switchTab('quiz', this)"><span class="nav-icon">☑️</span>Mock Test</div>
+    <div class="nav-item" onclick="switchTab('manage', this)"><span class="nav-icon">⚙️</span>Manage / Add</div>
+  </div>
+
+  <script>
+    // Default OT Notes Data
+    const defaultNotes = [
+      { cat: "Anesthesia", title: "Pin Index Safety System (PISS) & Cylinders", points: [
+        "Oxygen (O₂): Pin Index 2, 5 | Black body with White shoulder.",
+        "Nitrous Oxide (N₂O): Pin Index 3, 5 | Blue cylinder (liquefied gas).",
+        "Carbon Dioxide (CO₂): Pin Index 1, 6 | Grey cylinder.",
+        "Air: Pin Index 1, 5 | Grey body with Black & White shoulder."
+      ]},
+      { cat: "CSSD & Sterilization", title: "Autoclave & Biological Indicators", points: [
+        "Standard Steam Sterilization: 121°C at 15 psi for 15–20 mins.",
+        "Flash Sterilization: 134°C at 30 psi for 3–4 mins.",
+        "Steam Autoclave Biological Indicator: Geobacillus stearothermophilus.",
+        "ETO & Dry Heat Biological Indicator: Bacillus atrophaeus."
+      ]},
+      { cat: "Surgical Positions", title: "Positioning & Nerve Injury Risks", points: [
+        "Lithotomy Position: Common Peroneal Nerve injury (Foot drop).",
+        "Trendelenburg Position: Brachial Plexus injury (steep head-down).",
+        "Prone Position: Pressure on eyes, abdomen (IVC compression) & Ulnar nerve.",
+        "Sitting Position (Neuro): High risk of Venous Air Embolism (VAE)."
+      ]},
+      { cat: "Emergency Drugs", title: "Crash Cart & OT Emergency Drugs", points: [
+        "Adrenaline (1:1000): 1 mg IV every 3–5 mins in Cardiac Arrest.",
+        "Atropine: 0.6 mg IV for severe intraoperative Bradycardia.",
+        "Succinylcholine: 1–1.5 mg/kg IV (Depolarizing MR, causes hyperkalemia).",
+        "Dantrolene: Drug of choice for Malignant Hyperthermia."
+      ]}
+    ];
+
+    // Default Video Classes
+    const defaultVideos = [
+      { cat: "Anesthesia", title: "Class 01: Anesthesia Machine & Safety Checks (5 Min)", url: "" },
+      { cat: "CSSD", title: "Class 02: Autoclave Working & Bowie-Dick Test (5 Min)", url: "" },
+      { cat: "Surgery", title: "Class 03: Basic Laparotomy Instruments Identification (5 Min)", url: "" }
+    ];
+
+    // Default MCQs
+    const mcqs = [
+      { q: "1. What is the Pin Index for Oxygen (O₂) cylinder?", opts: ["1, 5", "2, 5", "3, 5", "1, 6"], ans: 1, exp: "Oxygen uses pins 2 & 5. Nitrous Oxide uses 3 & 5." },
+      { q: "2. Biological indicator used to test Steam Autoclave efficacy is:", opts: ["Bacillus atrophaeus", "Geobacillus stearothermophilus", "Staphylococcus aureus", "E. coli"], ans: 1, exp: "Geobacillus stearothermophilus spores are destroyed at 121°C steam sterilization." },
+      { q: "3. Which nerve is most commonly injured in Lithotomy position?", opts: ["Radial nerve", "Optic nerve", "Common Peroneal nerve", "Phrenic nerve"], ans: 2, exp: "Compression against stirrups damages the Common Peroneal nerve causing foot drop." },
+      { q: "4. Drug of choice for Malignant Hyperthermia is:", opts: ["Propofol", "Dantrolene", "Neostigmine", "Midazolam"], ans: 1, exp: "Dantrolene sodium blocks calcium release from sarcoplasmic reticulum." },
+      { q: "5. Color coding of Nitrous Oxide (N₂O) cylinder in India is:", opts: ["Black with white shoulder", "French Blue", "Grey", "Orange"], ans: 1, exp: "Nitrous oxide cylinder is completely French Blue." }
+    ];
+
+    let notes = JSON.parse(localStorage.getItem('ot_notes')) || defaultNotes;
+    let videos = JSON.parse(localStorage.getItem('ot_videos')) || defaultVideos;
+    let score = 0;
+
+    function extractYTId(url) {
+      if (!url) return "";
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : (url.length === 11 ? url : "");
+    }
+
+    function renderNotes() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const container = document.getElementById('notes-list');
+      const filtered = notes.filter(n => n.title.toLowerCase().includes(q) || n.cat.toLowerCase().includes(q) || n.points.join(' ').toLowerCase().includes(q));
+      document.getElementById('note-count').innerText = filtered.length + " Topics";
+      container.innerHTML = filtered.map(n => `
+        <div class="card">
+          <span class="card-tag">${n.cat}</span>
+          <h3>${n.title}</h3>
+          <ul>${n.points.map(p => `<li>${p}</li>`).join('')}</ul>
+        </div>
+      `).join('');
+    }
+
+    function renderVideos() {
+      const container = document.getElementById('videos-list');
+      container.innerHTML = videos.map((v, idx) => {
+        const ytId = extractYTId(v.url);
+        return `
+          <div class="card">
+            <span class="card-tag">${v.cat}</span>
+            <h3>${v.title}</h3>
+            <div class="video-box">
+              ${ytId ? `<iframe src="https://www.youtube.com/embed/${ytId}" allowfullscreen></iframe>` : `<span>No video linked yet</span>`}
+            </div>
+            <button class="btn btn-outline" onclick="setVideoLink(${idx})">${ytId ? 'Change YT Link' : '+ Paste YouTube Link'}</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setVideoLink(idx) {
+      const link = prompt("Paste YouTube Unlisted/Public Video Link:");
+      if (link !== null) {
+        videos[idx].url = link.trim();
+        localStorage.setItem('ot_videos', JSON.stringify(videos));
+        renderVideos();
+      }
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-list');
+      container.innerHTML = mcqs.map((m, qIdx) => `
+        <div class="card">
+          <h3>${m.q}</h3>
+          ${m.opts.map((opt, oIdx) => `<button class="option" id="opt-${qIdx}-${oIdx}" onclick="checkAns(${qIdx}, ${oIdx})">${opt}</button>`).join('')}
+          <div class="exp" id="exp-${qIdx}">💡 ${m.exp}</div>
+        </div>
+      `).join('');
+    }
+
+    function checkAns(qIdx, oIdx) {
+      const m = mcqs[qIdx];
+      const expEl = document.getElementById(`exp-${qIdx}`);
+      if (expEl.style.display === 'block') return;
+      expEl.style.display = 'block';
+      if (oIdx === m.ans) {
+        document.getElementById(`opt-${qIdx}-${oIdx}`).classList.add('correct');
+        score++;
+        document.getElementById('score-box').innerText = "Score: " + score + "/" + mcqs.length;
+      } else {
+        document.getElementById(`opt-${qIdx}-${oIdx}`).classList.add('wrong');
+        document.getElementById(`opt-${qIdx}-${m.ans}`).classList.add('correct');
+      }
+    }
+
+    function addNote() {
+      const cat = document.getElementById('newNoteCat').value.trim() || "General OT";
+      const title = document.getElementById('newNoteTitle').value.trim();
+      const raw = document.getElementById('newNotePoints').value.trim();
+      if (!title || !raw) return alert("Please enter title and points!");
+      notes.unshift({ cat, title, points: raw.split('\n').filter(Boolean) });
+      localStorage.setItem('ot_notes', JSON.stringify(notes));
+      document.getElementById('newNoteTitle').value = '';
+      document.getElementById('newNotePoints').value = '';
+      alert("Note Added!");
+      renderNotes();
+    }
+
+    function addVideo() {
+      const cat = document.getElementById('newVidCat').value.trim() || "OT Class";
+      const title = document.getElementById('newVidTitle').value.trim();
+      const url = document.getElementById('newVidUrl').value.trim();
+      if (!title || !url) return alert("Please enter title and YouTube link!");
+      videos.unshift({ cat, title, url });
+      localStorage.setItem('ot_videos', JSON.stringify(videos));
+      document.getElementById('newVidTitle').value = '';
+      document.getElementById('newVidUrl').value = '';
+      alert("Video Class Added!");
+      renderVideos();
+    }
+
+    function switchTab(tab, el) {
+      ['notes', 'videos', 'quiz', 'manage'].forEach(t => document.getElementById('tab-' + t).classList.add('hidden'));
+      document.getElementById('tab-' + tab).classList.remove('hidden');
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Initialize
+    renderNotes();
+    renderVideos();
+    renderQuiz();
+  </script>
+</body>
+</html>
