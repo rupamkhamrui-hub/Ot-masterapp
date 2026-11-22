@@ -9,29 +9,35 @@
     body { background: #f1f5f9; color: #0f172a; padding-bottom: 125px; }
     
     /* Header */
-    .header { background: linear-gradient(135deg, #0f766e, #115e59); color: #fff; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
-    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header { background: linear-gradient(135deg, #0f766e, #115e59); color: #fff; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,0.12); user-select: none; }
+    .header-left { display: flex; align-items: center; gap: 10px; cursor: pointer; }
     .logo { width: 38px; height: 38px; background: rgba(255,255,255,0.18); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
     .header h1 { font-size: 17px; font-weight: 700; }
     .header p { font-size: 11px; color: #ccfbf1; }
     .badge { background: rgba(0,0,0,0.25); padding: 4px 9px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.4px; }
+    .admin-pill { background: #f59e0b; color: #000; padding: 2px 7px; border-radius: 10px; font-size: 10px; font-weight: 800; margin-left: 6px; }
 
     /* Container & Cards */
     .container { padding: 14px; max-width: 600px; margin: auto; }
     .section-title { font-size: 15px; font-weight: 700; color: #0f766e; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
     .search-box { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; margin-bottom: 12px; font-size: 14px; background: #fff; }
     
-    .card { background: #fff; border-radius: 12px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid #0d9488; }
-    .card-tag { display: inline-block; background: #ccfbf1; color: #0f766e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-bottom: 6px; }
+    .card { background: #fff; border-radius: 12px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid #0d9488; position: relative; }
+    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .card-tag { display: inline-block; background: #ccfbf1; color: #0f766e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
     .card h3 { font-size: 15px; margin-bottom: 8px; color: #1e293b; }
     .card ul { padding-left: 18px; font-size: 13.5px; line-height: 1.55; color: #334155; }
     .card li { margin-bottom: 5px; }
 
+    /* Buttons */
+    .btn { background: #0f766e; color: #fff; border: none; padding: 9px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 600; cursor: pointer; margin-top: 6px; display: inline-block; }
+    .btn-outline { background: #f0fdfa; color: #0f766e; border: 1px solid #0d9488; }
+    .btn-del { background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; }
+    .btn-warn { background: #f59e0b; color: #0f172a; }
+
     /* Video Card */
     .video-box { width: 100%; aspect-ratio: 16/9; background: #0f172a; border-radius: 8px; overflow: hidden; margin-top: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 13px; }
     .video-box iframe { width: 100%; height: 100%; border: none; }
-    .btn { background: #0f766e; color: #fff; border: none; padding: 8px 12px; border-radius: 8px; font-size: 12.5px; font-weight: 600; cursor: pointer; margin-top: 8px; display: inline-block; }
-    .btn-outline { background: #f0fdfa; color: #0f766e; border: 1px solid #0d9488; }
 
     /* Quiz */
     .option { display: block; width: 100%; text-align: left; padding: 10px 12px; margin: 6px 0; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; font-size: 13.5px; cursor: pointer; }
@@ -40,7 +46,7 @@
     .exp { font-size: 12.5px; background: #f0fdfa; padding: 8px; border-radius: 6px; margin-top: 6px; color: #115e59; display: none; }
 
     /* Forms */
-    input, textarea, select { width: 100%; padding: 10px; margin: 6px 0 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13.5px; }
+    input, textarea, select { width: 100%; padding: 10px; margin: 5px 0 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13.5px; background: #fff; }
 
     /* AdMob Banner & Bottom Nav */
     .ad-banner { position: fixed; bottom: 58px; left: 0; right: 0; height: 50px; background: #e2e8f0; border-top: 1px solid #cbd5e1; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font-size: 12px; color: #475569; z-index: 40; }
@@ -49,17 +55,17 @@
     .nav-item { flex: 1; text-align: center; font-size: 11px; color: #64748b; cursor: pointer; padding: 6px 0; font-weight: 600; }
     .nav-item.active { color: #0f766e; }
     .nav-icon { font-size: 18px; display: block; margin-bottom: 2px; }
-    .hidden { display: none; }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header (Tap 5 times on logo/title for Admin Mode) -->
   <div class="header">
-    <div class="header-left">
+    <div class="header-left" onclick="handleSecretTap()">
       <div class="logo">🩺</div>
       <div>
-        <h1>OT MasterPrep</h1>
+        <h1>OT MasterPrep <span id="admin-badge" class="admin-pill hidden">ADMIN</span></h1>
         <p>Operation Theatre Technology</p>
       </div>
     </div>
@@ -85,21 +91,52 @@
     <div id="quiz-list"></div>
   </div>
 
-  <!-- TAB 4: MANAGE / ADD -->
+  <!-- TAB 4: ADMIN ONLY MANAGE / ADD -->
   <div id="tab-manage" class="container hidden">
-    <div class="section-title"><span>➕ Add New Note or Video Class</span></div>
+    <div class="section-title">
+      <span>🔐 Admin Control Panel</span>
+      <button class="btn-del" onclick="logoutAdmin()">Lock Admin</button>
+    </div>
+
+    <!-- Cloud Sync Export -->
+    <div class="card" style="border-left-color: #f59e0b; background: #fffbeb;">
+      <h3>☁️ Sync Changes to GitHub (All Users)</h3>
+      <p style="font-size:12px; color:#78350f; margin-bottom:8px;">Note/MCQ add ba delete korar por niche click kore JSON copy korun ebong GitHub-er <b>notes.json</b> file-e paste korun:</p>
+      <button class="btn btn-warn" onclick="copyCloudJSON()">📋 Copy Updated JSON for GitHub</button>
+    </div>
+
+    <!-- Add Note -->
     <div class="card">
-      <h3>Add Topic Note</h3>
+      <h3>➕ Add Study Note</h3>
       <input type="text" id="newNoteCat" placeholder="Subject (e.g. Anesthesia, CSSD, Surgery)" />
       <input type="text" id="newNoteTitle" placeholder="Topic Title" />
       <textarea id="newNotePoints" rows="3" placeholder="Write key points (separate lines for bullets)"></textarea>
       <button class="btn" onclick="addNote()">Save Note</button>
     </div>
 
+    <!-- Add Mock Question -->
     <div class="card">
-      <h3>Add 5-Min YouTube Class</h3>
+      <h3>📝 Add New Mock MCQ</h3>
+      <input type="text" id="newMcqQ" placeholder="Question (e.g. Pin index of Nitrous Oxide is?)" />
+      <input type="text" id="newMcqOpt0" placeholder="Option A" />
+      <input type="text" id="newMcqOpt1" placeholder="Option B" />
+      <input type="text" id="newMcqOpt2" placeholder="Option C" />
+      <input type="text" id="newMcqOpt3" placeholder="Option D" />
+      <select id="newMcqAns">
+        <option value="0">Correct Answer: Option A</option>
+        <option value="1">Correct Answer: Option B</option>
+        <option value="2">Correct Answer: Option C</option>
+        <option value="3">Correct Answer: Option D</option>
+      </select>
+      <input type="text" id="newMcqExp" placeholder="Short Explanation (Why is it correct?)" />
+      <button class="btn" onclick="addMcq()">Save Mock Question</button>
+    </div>
+
+    <!-- Add Video -->
+    <div class="card">
+      <h3>🎥 Add YouTube Video Class</h3>
       <input type="text" id="newVidCat" placeholder="Subject (e.g. Anesthesia)" />
-      <input type="text" id="newVidTitle" placeholder="Class Title (e.g. Boyle's Machine Check)" />
+      <input type="text" id="newVidTitle" placeholder="Class Title (e.g. PISS Full Class)" />
       <input type="text" id="newVidUrl" placeholder="Paste YouTube Link (Unlisted or Public)" />
       <button class="btn" onclick="addVideo()">Save Video Class</button>
     </div>
@@ -116,11 +153,18 @@
     <div class="nav-item active" onclick="switchTab('notes', this)"><span class="nav-icon">📑</span>Notes</div>
     <div class="nav-item" onclick="switchTab('videos', this)"><span class="nav-icon">▶️</span>Video Classes</div>
     <div class="nav-item" onclick="switchTab('quiz', this)"><span class="nav-icon">☑️</span>Mock Test</div>
-    <div class="nav-item" onclick="switchTab('manage', this)"><span class="nav-icon">⚙️</span>Manage / Add</div>
+    <div id="nav-admin" class="nav-item hidden" onclick="switchTab('manage', this)"><span class="nav-icon">🔐</span>Admin</div>
   </div>
 
   <script>
-    // Default OT Notes Data
+    const ADMIN_PIN = "2026"; // Apnar secret Admin PIN
+    const CLOUD_URL = "https://raw.githubusercontent.com/rupamkhamrui-hub/Ot-masterapp/refs/heads/main/notes.json";
+    
+    let isAdmin = false;
+    let tapCount = 0;
+    let tapTimer = null;
+
+    // Fallback Default Data
     const defaultNotes = [
       { cat: "Anesthesia", title: "Pin Index Safety System (PISS) & Cylinders", points: [
         "Oxygen (O₂): Pin Index 2, 5 | Black body with White shoulder.",
@@ -133,40 +177,64 @@
         "Flash Sterilization: 134°C at 30 psi for 3–4 mins.",
         "Steam Autoclave Biological Indicator: Geobacillus stearothermophilus.",
         "ETO & Dry Heat Biological Indicator: Bacillus atrophaeus."
-      ]},
-      { cat: "Surgical Positions", title: "Positioning & Nerve Injury Risks", points: [
-        "Lithotomy Position: Common Peroneal Nerve injury (Foot drop).",
-        "Trendelenburg Position: Brachial Plexus injury (steep head-down).",
-        "Prone Position: Pressure on eyes, abdomen (IVC compression) & Ulnar nerve.",
-        "Sitting Position (Neuro): High risk of Venous Air Embolism (VAE)."
-      ]},
-      { cat: "Emergency Drugs", title: "Crash Cart & OT Emergency Drugs", points: [
-        "Adrenaline (1:1000): 1 mg IV every 3–5 mins in Cardiac Arrest.",
-        "Atropine: 0.6 mg IV for severe intraoperative Bradycardia.",
-        "Succinylcholine: 1–1.5 mg/kg IV (Depolarizing MR, causes hyperkalemia).",
-        "Dantrolene: Drug of choice for Malignant Hyperthermia."
       ]}
     ];
 
-    // Default Video Classes
     const defaultVideos = [
-      { cat: "Anesthesia", title: "Class 01: Anesthesia Machine & Safety Checks (5 Min)", url: "" },
-      { cat: "CSSD", title: "Class 02: Autoclave Working & Bowie-Dick Test (5 Min)", url: "" },
-      { cat: "Surgery", title: "Class 03: Basic Laparotomy Instruments Identification (5 Min)", url: "" }
+      { cat: "Anesthesia", title: "Class 01: Anesthesia Machine & Safety Checks (5 Min)", url: "" }
     ];
 
-    // Default MCQs
-    const mcqs = [
-      { q: "1. What is the Pin Index for Oxygen (O₂) cylinder?", opts: ["1, 5", "2, 5", "3, 5", "1, 6"], ans: 1, exp: "Oxygen uses pins 2 & 5. Nitrous Oxide uses 3 & 5." },
-      { q: "2. Biological indicator used to test Steam Autoclave efficacy is:", opts: ["Bacillus atrophaeus", "Geobacillus stearothermophilus", "Staphylococcus aureus", "E. coli"], ans: 1, exp: "Geobacillus stearothermophilus spores are destroyed at 121°C steam sterilization." },
-      { q: "3. Which nerve is most commonly injured in Lithotomy position?", opts: ["Radial nerve", "Optic nerve", "Common Peroneal nerve", "Phrenic nerve"], ans: 2, exp: "Compression against stirrups damages the Common Peroneal nerve causing foot drop." },
-      { q: "4. Drug of choice for Malignant Hyperthermia is:", opts: ["Propofol", "Dantrolene", "Neostigmine", "Midazolam"], ans: 1, exp: "Dantrolene sodium blocks calcium release from sarcoplasmic reticulum." },
-      { q: "5. Color coding of Nitrous Oxide (N₂O) cylinder in India is:", opts: ["Black with white shoulder", "French Blue", "Grey", "Orange"], ans: 1, exp: "Nitrous oxide cylinder is completely French Blue." }
+    const defaultMcqs = [
+      { q: "What is the Pin Index for Oxygen (O₂) cylinder?", opts: ["1, 5", "2, 5", "3, 5", "1, 6"], ans: 1, exp: "Oxygen uses pins 2 & 5. Nitrous Oxide uses 3 & 5." },
+      { q: "Biological indicator used to test Steam Autoclave efficacy is:", opts: ["Bacillus atrophaeus", "Geobacillus stearothermophilus", "Staphylococcus aureus", "E. coli"], ans: 1, exp: "Geobacillus stearothermophilus spores are destroyed at 121°C steam sterilization." }
     ];
 
     let notes = JSON.parse(localStorage.getItem('ot_notes')) || defaultNotes;
     let videos = JSON.parse(localStorage.getItem('ot_videos')) || defaultVideos;
+    let mcqs = JSON.parse(localStorage.getItem('ot_mcqs')) || defaultMcqs;
     let score = 0;
+
+    // Load live updates from GitHub Raw JSON
+    async function syncFromCloud() {
+      try {
+        const res = await fetch(CLOUD_URL + "?t=" + Date.now());
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.notes) { notes = data.notes; localStorage.setItem('ot_notes', JSON.stringify(notes)); }
+        if (data.videos) { videos = data.videos; localStorage.setItem('ot_videos', JSON.stringify(videos)); }
+        if (data.mcqs) { mcqs = data.mcqs; localStorage.setItem('ot_mcqs', JSON.stringify(mcqs)); }
+        renderAll();
+      } catch (e) { /* Offline fallback uses localStorage */ }
+    }
+
+    // Secret 5-Tap Admin Unlock
+    function handleSecretTap() {
+      tapCount++;
+      clearTimeout(tapTimer);
+      tapTimer = setTimeout(() => { tapCount = 0; }, 2000);
+      if (tapCount >= 5) {
+        tapCount = 0;
+        if (isAdmin) return alert("Admin Mode already active!");
+        const pin = prompt("Enter Admin Secret PIN:");
+        if (pin === ADMIN_PIN) {
+          isAdmin = true;
+          document.getElementById('admin-badge').classList.remove('hidden');
+          document.getElementById('nav-admin').classList.remove('hidden');
+          renderAll();
+          alert("Admin Mode Unlocked! Delete & Add options active.");
+        } else if (pin !== null) {
+          alert("Wrong PIN!");
+        }
+      }
+    }
+
+    function logoutAdmin() {
+      isAdmin = false;
+      document.getElementById('admin-badge').classList.add('hidden');
+      document.getElementById('nav-admin').classList.add('hidden');
+      switchTab('notes', document.querySelector('.nav-item'));
+      renderAll();
+    }
 
     function extractYTId(url) {
       if (!url) return "";
@@ -178,15 +246,27 @@
     function renderNotes() {
       const q = document.getElementById('searchInput').value.toLowerCase();
       const container = document.getElementById('notes-list');
-      const filtered = notes.filter(n => n.title.toLowerCase().includes(q) || n.cat.toLowerCase().includes(q) || n.points.join(' ').toLowerCase().includes(q));
+      const filtered = notes.map((n, i) => ({...n, origIdx: i}))
+        .filter(n => n.title.toLowerCase().includes(q) || n.cat.toLowerCase().includes(q) || n.points.join(' ').toLowerCase().includes(q));
+      
       document.getElementById('note-count').innerText = filtered.length + " Topics";
       container.innerHTML = filtered.map(n => `
         <div class="card">
-          <span class="card-tag">${n.cat}</span>
+          <div class="card-top">
+            <span class="card-tag">${n.cat}</span>
+            ${isAdmin ? `<button class="btn-del" onclick="deleteNote(${n.origIdx})">🗑️ Delete</button>` : ''}
+          </div>
           <h3>${n.title}</h3>
           <ul>${n.points.map(p => `<li>${p}</li>`).join('')}</ul>
         </div>
       `).join('');
+    }
+
+    function deleteNote(idx) {
+      if (!confirm("Ei study note-ta delete korben?")) return;
+      notes.splice(idx, 1);
+      localStorage.setItem('ot_notes', JSON.stringify(notes));
+      renderNotes();
     }
 
     function renderVideos() {
@@ -195,15 +275,25 @@
         const ytId = extractYTId(v.url);
         return `
           <div class="card">
-            <span class="card-tag">${v.cat}</span>
+            <div class="card-top">
+              <span class="card-tag">${v.cat}</span>
+              ${isAdmin ? `<button class="btn-del" onclick="deleteVideo(${idx})">🗑️ Delete</button>` : ''}
+            </div>
             <h3>${v.title}</h3>
             <div class="video-box">
               ${ytId ? `<iframe src="https://www.youtube.com/embed/${ytId}" allowfullscreen></iframe>` : `<span>No video linked yet</span>`}
             </div>
-            <button class="btn btn-outline" onclick="setVideoLink(${idx})">${ytId ? 'Change YT Link' : '+ Paste YouTube Link'}</button>
+            ${isAdmin ? `<button class="btn btn-outline" onclick="setVideoLink(${idx})">${ytId ? 'Change YT Link' : '+ Paste YouTube Link'}</button>` : ''}
           </div>
         `;
       }).join('');
+    }
+
+    function deleteVideo(idx) {
+      if (!confirm("Ei video class-ta delete korben?")) return;
+      videos.splice(idx, 1);
+      localStorage.setItem('ot_videos', JSON.stringify(videos));
+      renderVideos();
     }
 
     function setVideoLink(idx) {
@@ -216,14 +306,27 @@
     }
 
     function renderQuiz() {
+      score = 0;
+      document.getElementById('score-box').innerText = "Score: 0/" + mcqs.length;
       const container = document.getElementById('quiz-list');
       container.innerHTML = mcqs.map((m, qIdx) => `
         <div class="card">
+          <div class="card-top">
+            <span class="card-tag">Q${qIdx + 1}</span>
+            ${isAdmin ? `<button class="btn-del" onclick="deleteMcq(${qIdx})">🗑️ Delete</button>` : ''}
+          </div>
           <h3>${m.q}</h3>
           ${m.opts.map((opt, oIdx) => `<button class="option" id="opt-${qIdx}-${oIdx}" onclick="checkAns(${qIdx}, ${oIdx})">${opt}</button>`).join('')}
           <div class="exp" id="exp-${qIdx}">💡 ${m.exp}</div>
         </div>
       `).join('');
+    }
+
+    function deleteMcq(idx) {
+      if (!confirm("Ei MCQ question-ta delete korben?")) return;
+      mcqs.splice(idx, 1);
+      localStorage.setItem('ot_mcqs', JSON.stringify(mcqs));
+      renderQuiz();
     }
 
     function checkAns(qIdx, oIdx) {
@@ -254,6 +357,24 @@
       renderNotes();
     }
 
+    function addMcq() {
+      const q = document.getElementById('newMcqQ').value.trim();
+      const opts = [
+        document.getElementById('newMcqOpt0').value.trim(),
+        document.getElementById('newMcqOpt1').value.trim(),
+        document.getElementById('newMcqOpt2').value.trim(),
+        document.getElementById('newMcqOpt3').value.trim()
+      ];
+      const ans = parseInt(document.getElementById('newMcqAns').value);
+      const exp = document.getElementById('newMcqExp').value.trim() || "Important OT Exam Concept.";
+      if (!q || opts.some(o => !o)) return alert("Question ar 4-te option sob bhorun!");
+      mcqs.push({ q, opts, ans, exp });
+      localStorage.setItem('ot_mcqs', JSON.stringify(mcqs));
+      ['newMcqQ', 'newMcqOpt0', 'newMcqOpt1', 'newMcqOpt2', 'newMcqOpt3', 'newMcqExp'].forEach(id => document.getElementById(id).value = '');
+      alert("New Mock Question Added!");
+      renderQuiz();
+    }
+
     function addVideo() {
       const cat = document.getElementById('newVidCat').value.trim() || "OT Class";
       const title = document.getElementById('newVidTitle').value.trim();
@@ -267,17 +388,11 @@
       renderVideos();
     }
 
-    function switchTab(tab, el) {
-      ['notes', 'videos', 'quiz', 'manage'].forEach(t => document.getElementById('tab-' + t).classList.add('hidden'));
-      document.getElementById('tab-' + tab).classList.remove('hidden');
-      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      el.classList.add('active');
-    }
-
-    // Initialize
-    renderNotes();
-    renderVideos();
-    renderQuiz();
-  </script>
-</body>
-</html>
+    function copyCloudJSON() {
+      const payload = JSON.stringify({ notes, videos, mcqs }, null, 2);
+      navigator.clipboard.writeText(payload).then(() => {
+        alert("Updated JSON Copied! Ebar GitHub-er notes.json file-e paste kore save korun.");
+      }).catch(() => {
+        prompt("Copy this JSON:", payload);
+      });
+   
