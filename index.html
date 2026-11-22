@@ -1,0 +1,313 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OT MasterPrep - Operation Theatre Technology</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        teal: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Hide scrollbars for horizontal category pills while maintaining scrollability */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Native app-like tap highlight removal */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background-color: #f1f5f9;
+        }
+        /* Smooth fade animation */
+        .fade-in {
+            animation: fadeIn 0.2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased select-none sm:select-auto">
+
+    <!-- Mobile-First App Shell Container -->
+    <div class="max-w-md mx-auto min-h-screen bg-slate-50 shadow-xl relative flex flex-col pb-32 border-x border-slate-200">
+
+        <!-- Top Clinical Header -->
+        <header class="sticky top-0 z-30 bg-gradient-to-r from-teal-700 to-teal-800 text-white px-4 py-3.5 shadow-md">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                        <i class="fa-solid fa-heart-pulse text-teal-200 text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-base leading-tight tracking-tight">OT MasterPrep</h1>
+                        <p class="text-[11px] text-teal-100 font-medium">Operation Theatre Technology</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-[10px] font-semibold bg-teal-900/60 border border-teal-500/30 px-2.5 py-1 rounded-full text-teal-100">
+                        AIIMS • ESIC • RRB
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="app-content" class="flex-1 p-4 space-y-4">
+            <!-- Dynamic Content Injected by JavaScript -->
+        </main>
+
+        <!-- Subtle AdMob Banner Space Preview (Fixed right above Bottom Nav) -->
+        <div class="fixed bottom-16 left-0 right-0 z-20 max-w-md mx-auto px-2">
+            <div class="bg-slate-200/95 backdrop-blur-sm border border-slate-300 rounded-lg h-[50px] flex items-center justify-between px-3 shadow-sm">
+                <div class="flex items-center space-x-2">
+                    <span class="bg-amber-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">Ad</span>
+                    <span class="text-xs font-medium text-slate-600">AdMob Banner Space (320x50)</span>
+                </div>
+                <span class="text-[10px] text-slate-400 font-mono">ca-app-pub-xxxx</span>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="fixed bottom-0 left-0 right-0 z-30 max-w-md mx-auto bg-white border-t border-slate-200 h-16 px-2 flex items-center justify-around shadow-[0_-4px_12px_rgba(0,0,0,0.04)]">
+            <button onclick="switchTab('notes')" id="nav-notes" class="nav-btn flex flex-col items-center justify-center w-full h-full text-teal-600 transition-colors">
+                <i class="fa-solid fa-book-medical text-lg mb-1"></i>
+                <span class="text-[11px] font-semibold">Notes</span>
+            </button>
+            <button onclick="switchTab('videos')" id="nav-videos" class="nav-btn flex flex-col items-center justify-center w-full h-full text-slate-400 hover:text-slate-600 transition-colors">
+                <i class="fa-solid fa-circle-play text-lg mb-1"></i>
+                <span class="text-[11px] font-medium">Video Classes</span>
+            </button>
+            <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn flex flex-col items-center justify-center w-full h-full text-slate-400 hover:text-slate-600 transition-colors">
+                <i class="fa-solid fa-clipboard-check text-lg mb-1"></i>
+                <span class="text-[11px] font-medium">Mock Test</span>
+            </button>
+            <button onclick="switchTab('manage')" id="nav-manage" class="nav-btn flex flex-col items-center justify-center w-full h-full text-slate-400 hover:text-slate-600 transition-colors">
+                <i class="fa-solid fa-sliders text-lg mb-1"></i>
+                <span class="text-[11px] font-medium">Manage / Add</span>
+            </button>
+        </nav>
+
+        <!-- Note Detail Reader Modal -->
+        <div id="note-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex-col justify-end sm:justify-center max-w-md mx-auto">
+            <div class="bg-white w-full max-h-[88vh] rounded-t-3xl sm:rounded-2xl flex flex-col overflow-hidden shadow-2xl fade-in">
+                <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-teal-50/60">
+                    <div>
+                        <span id="modal-note-category" class="text-[10px] font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-2.5 py-0.5 rounded-full">Category</span>
+                        <h2 id="modal-note-title" class="text-base font-bold text-slate-900 mt-1">Topic Title</h2>
+                    </div>
+                    <button onclick="closeNoteModal()" class="w-9 h-9 rounded-full bg-slate-200/70 text-slate-600 flex items-center justify-center hover:bg-slate-300">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="modal-note-body" class="p-5 overflow-y-auto space-y-4 text-sm text-slate-700 leading-relaxed">
+                    <!-- Note rich content -->
+                </div>
+                <div class="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between gap-3">
+                    <button id="modal-note-complete-btn" class="flex-1 py-2.5 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition">
+                        <!-- Toggled dynamically -->
+                    </button>
+                    <button onclick="closeNoteModal()" class="py-2.5 px-5 rounded-xl bg-slate-200 text-slate-700 font-semibold text-sm">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Player Modal -->
+        <div id="video-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-xs hidden flex-col justify-center p-3 max-w-md mx-auto">
+            <div class="bg-white w-full rounded-2xl overflow-hidden shadow-2xl fade-in">
+                <div class="px-4 py-3 bg-slate-900 text-white flex items-center justify-between">
+                    <div class="flex items-center space-x-2 truncate pr-2">
+                        <span class="bg-teal-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">5:00 MIN</span>
+                        <h3 id="video-modal-title" class="text-sm font-semibold truncate">Class Title</h3>
+                    </div>
+                    <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 shrink-0">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                
+                <!-- Responsive 16:9 Video Container -->
+                <div id="video-player-container" class="relative w-full pt-[56.25%] bg-slate-950">
+                    <!-- Iframe or Placeholder injected here -->
+                </div>
+
+                <!-- Key Takeaways & Actions -->
+                <div class="p-4 space-y-3 max-h-[45vh] overflow-y-auto">
+                    <div class="flex items-center justify-between">
+                        <span id="video-modal-subject" class="text-xs font-semibold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-lg border border-teal-100">Subject</span>
+                        <button onclick="openEditVideoFromPlayer()" class="text-xs font-semibold text-slate-600 hover:text-teal-700 flex items-center gap-1">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit YouTube Link
+                        </button>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Key Exam Takeaways</h4>
+                        <ul id="video-modal-takeaways" class="space-y-1.5 text-xs text-slate-700 list-disc pl-4">
+                            <!-- Bullet points -->
+                        </ul>
+                    </div>
+                    <div class="pt-2 flex gap-2">
+                        <button id="video-watched-btn" class="flex-1 py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-2 transition">
+                            <!-- Watched state -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add / Edit Video Link Modal -->
+        <div id="edit-video-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex-col justify-center p-4 max-w-md mx-auto">
+            <div class="bg-white w-full rounded-2xl overflow-hidden shadow-2xl p-5 space-y-4 fade-in">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <h3 id="edit-modal-heading" class="font-bold text-base text-slate-900">Add / Update 5-Min Video</h3>
+                    <button onclick="closeEditVideoModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <form id="video-form" onsubmit="saveVideoForm(event)" class="space-y-3 text-sm">
+                    <input type="hidden" id="form-video-id">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Topic Title *</label>
+                        <input type="text" id="form-video-title" required placeholder="e.g., Boyle's Apparatus & Pin Index" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Subject Category *</label>
+                        <select id="form-video-subject" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600 bg-white">
+                            <option value="Anesthesia">Anesthesia</option>
+                            <option value="Surgical Instruments">Surgical Instruments</option>
+                            <option value="Sterilization & CSSD">Sterilization & CSSD</option>
+                            <option value="OT Management & Positions">OT Management & Positions</option>
+                            <option value="Anatomy & Pharmacology">Anatomy & Pharmacology</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">YouTube Link (Unlisted/Public) or Video ID</label>
+                        <input type="text" id="form-video-url" placeholder="https://youtu.be/xxxx or 11-char ID" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600">
+                        <p class="text-[11px] text-slate-400 mt-1">Supports standard, mobile, shorts, or unlisted YouTube URLs.</p>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Syllabus Tag / Short Note</label>
+                        <input type="text" id="form-video-tag" placeholder="e.g., High-Yield AIIMS CRE Topic" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Key Bullet Points (One per line)</label>
+                        <textarea id="form-video-bullets" rows="3" placeholder="Point 1&#10;Point 2&#10;Point 3" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600"></textarea>
+                    </div>
+                    <div class="pt-2 flex gap-2">
+                        <button type="submit" class="flex-1 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 rounded-xl shadow-sm transition">
+                            Save Class
+                        </button>
+                        <button type="button" onclick="closeEditVideoModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-semibold">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Toast Notification Box (Replaces alert()) -->
+        <div id="toast-box" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-200 flex items-center gap-2">
+            <i class="fa-solid fa-circle-check text-teal-400"></i>
+            <span id="toast-msg">Saved successfully</span>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // ==========================================
+        // 1. AUTHENTIC OT TECHNOLOGIST STUDY DATA
+        // ==========================================
+        const initialNotes = [
+            {
+                id: 'note-1',
+                category: 'Anesthesia',
+                title: "Anesthesia Machine & Boyle's Apparatus",
+                readTime: '4 min read',
+                highYield: true,
+                summary: 'Pin Index Safety System (PISS), cylinder color coding, pressure gauges, Bain circuit, Circle system & scavenging.',
+                sections: [
+                    {
+                        heading: '1. Pin Index Safety System (PISS)',
+                        points: [
+                            'Prevents wrong gas cylinder attachment to the yoke assembly of the anesthesia machine.',
+                            '<b>Oxygen (O₂):</b> Pins <b>2 & 5</b> | Body: Black, Shoulder: White | Service Pressure: ~1900–2000 psi (137 bar).',
+                            '<b>Nitrous Oxide (N₂O):</b> Pins <b>3 & 5</b> | Color: French Blue | Service Pressure: ~745 psi (liquefied gas).',
+                            '<b>Medical Air:</b> Pins <b>1 & 5</b> | Body: Black/Grey, Shoulder: White & Black quarters.',
+                            '<b>Carbon Dioxide (CO₂):</b> Pins <b>1 & 6</b> (≤7.5%) or <b>2 & 6</b> (>7.5%) | Color: Grey.',
+                            '<b>Entonox (50% O₂ + 50% N₂O):</b> Pin <b>7</b> | Body: Blue, Shoulder: White & Blue.'
+                        ]
+                    },
+                    {
+                        heading: '2. Pressure Regulators & Flowmeters',
+                        points: [
+                            '<b>Primary Pressure Regulator:</b> Reduces high cylinder pressure (~2000 psi) down to a constant safe working pressure of <b>45–60 psi</b> (approx. 4 bar).',
+                            '<b>Rotameters (Flowmeters):</b> Variable orifice, constant pressure tubes made of tapered glass. Read from the <b>top of the bobbin</b> or <b>center of the ball</b>.',
+                            '<b>Sequence Rule:</b> Oxygen flowmeter is always placed <b>downstream (last)</b> nearest to the common gas outlet to prevent hypoxic mixture delivery if an upstream tube leaks.'
+                        ]
+                    },
+                    {
+                        heading: '3. Breathing Circuits & Vaporizers',
+                        points: [
+                            '<b>Mapleson D (Bain Circuit):</b> Coaxial modification of Mapleson D. Most efficient for controlled ventilation (FGF = 70–100 mL/kg/min).',
+                            '<b>Mapleson F (Jackson-Rees):</b> T-piece modification used predominantly in <b>pediatric anesthesia</b> (<20 kg) due to minimal dead space and low resistance.',
+                            '<b>Circle System:</b> Uses unidirectional inspiratory/expiratory valves and CO₂ absorber (<b>Soda Lime:</b> 80% Ca(OH)₂, 4% NaOH, 1% KOH, 15% H₂O; Indicator: Ethyl violet turns purple when exhausted).',
+                            '<b>Vaporizers:</b> Tec-5 / Tec-7 are variable bypass, temperature-compensated, out-of-circuit vaporizers. <b>Desflurane (Tec-6)</b> requires electrical heating (39°C) and pressurization (2 atm) due to its low boiling point (23.5°C).'
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'note-2',
+                category: 'Anesthesia',
+                title: 'Airway Management & Intubation',
+                readTime: '5 min read',
+                highYield: true,
+                summary: 'ETT sizes, Macintosh vs Miller laryngoscope blades, Mallampati grades, LMA & Capnography (EtCO₂).',
+                sections: [
+                    {
+                        heading: '1. Endotracheal Tube (ETT) Sizing & Depth',
+                        points: [
+                            '<b>Adult Male:</b> 8.0 – 8.5 mm ID (Internal Diameter); fixed at <b>22–23 cm</b> at the incisor teeth.',
+                            '<b>Adult Female:</b> 7.0 – 7.5 mm ID; fixed at <b>20–21 cm</b> at the incisor teeth.',
+                            '<b>Pediatric Formula (>2 yrs):</b> Uncuffed ID = <code>(Age in years / 4) + 4</code>; Cuffed ID = <code>(Age / 4) + 3.5</code>.',
+                            '<b>Murphy Eye:</b> Lateral hole near the distal bevel providing an alternate ventilation pathway if the main lumen is occluded.'
+                        ]
+                    },
+                    {
+                        heading: '2. Laryngoscope Blades & Mallampati Score',
+                        points: [
+                            '<b>Macintosh Blade (Curved):</b> Tip is placed in the <b>vallecula</b> (anterior to epiglottis) to indirectly lift the epiglottis.',
+                            '<b>Miller Blade (Straight):</b>
